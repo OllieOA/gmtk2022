@@ -3,20 +3,18 @@ name: godot-ci
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 env:
   EXPORT_NAME: the-bean-experience
-  GODOT_VERSION: 3.4
+  GODOT_VERSION: 3.4.4-stable
 
 jobs:
   export-windows:
     name: Windows Export
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:3.4
+      image: barichello/godot-ci:3.4.4-stable
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -53,7 +51,7 @@ jobs:
     name: Linux Export
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:3.4
+      image: barichello/godot-ci:3.4.4-stable
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -89,7 +87,7 @@ jobs:
     name: Web Export
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:3.4
+      image: barichello/godot-ci:3.4.4-stable
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -125,7 +123,7 @@ jobs:
     name: Mac Export
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:3.4
+      image: barichello/godot-ci:3.4.4-stable
     steps:
       - name: Checkout
         uses: actions/checkout@v1
