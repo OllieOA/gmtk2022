@@ -6,16 +6,24 @@
 [node name="prototype" type="Node2D"]
 
 [node name="player_dice" parent="." instance=ExtResource( 2 )]
-position = Vector2( 492, 86 )
+position = Vector2( -552, 460 )
 collision_layer = 1
 script = ExtResource( 1 )
 
 [node name="terrain_blocks" type="Node2D" parent="."]
 
-[node name="shape_1" type="StaticBody2D" parent="terrain_blocks"]
+[node name="shape_1" type="StaticBody2D" parent="terrain_blocks" groups=["terrain"]]
 position = Vector2( 505, 519 )
 collision_layer = 128
 collision_mask = 3
 
 [node name="collision_polygon" type="CollisionPolygon2D" parent="terrain_blocks/shape_1"]
+polygon = PoolVector2Array( 1, 0, 105, 11, 219, -25, 469, -70, 673, -44, 674, 136, -339, 133, -331, 1, -66, -16 )
+
+[node name="collision_polygon2" type="CollisionPolygon2D" parent="terrain_blocks/shape_1"]
+position = Vector2( 986, -37 )
+polygon = PoolVector2Array( 1, 0, 105, 11, 219, -25, 469, -70, 673, -44, 674, 136, -339, 133, -331, 1, -66, -16 )
+
+[node name="collision_polygon3" type="CollisionPolygon2D" parent="terrain_blocks/shape_1"]
+position = Vector2( -1003, 45 )
 polygon = PoolVector2Array( 1, 0, 105, 11, 219, -25, 469, -70, 673, -44, 674, 136, -339, 133, -331, 1, -66, -16 )

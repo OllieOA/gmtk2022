@@ -3,12 +3,31 @@
 [ext_resource path="res://source/scenes/dice/base_dice.gd" type="Script" id=1]
 [ext_resource path="res://assets/_prototype/prototype_dice_base.png" type="Texture" id=2]
 [ext_resource path="res://assets/_prototype/prototype_dice_faces.png" type="Texture" id=3]
-[ext_resource path="res://assets/_prototype/prototype_launch_bar_base.png" type="Texture" id=4]
-[ext_resource path="res://assets/_prototype/prototype_launch_bar_fill.png" type="Texture" id=5]
+[ext_resource path="res://source/scenes/dice/launch_bar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 2.0
 bounce = 0.2
+
+[sub_resource type="Animation" id=2]
+resource_name = "random_rolling"
+length = 0.1
+loop = true
+step = 0.01
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_change_face_random"
+} ]
+}
 
 [node name="base_dice" type="RigidBody2D"]
 collision_layer = 0
@@ -16,10 +35,13 @@ collision_mask = 128
 mass = 10.0
 physics_material_override = SubResource( 1 )
 gravity_scale = 10.0
-contacts_reported = 1
+contacts_reported = 2
+contact_monitor = true
 script = ExtResource( 1 )
 base_sprite = NodePath("base_sprite")
 face_sprite = NodePath("face_sprite")
+launch_bar = NodePath("launch_bar")
+rolling_animator = NodePath("rolling_animator")
 
 [node name="base_sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -27,15 +49,18 @@ texture = ExtResource( 2 )
 [node name="face_sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 hframes = 7
+frame = 6
 
 [node name="collision_polygon" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -32, -48, 32, -48, 44, -44, 48, -32, 48, 32, 44, 44, 32, 48, -32, 48, -44, 44, -48, 32, -48, -32, -44, -44 )
 
-[node name="launch_bar" type="TextureProgress" parent="."]
-margin_left = 100.0
-margin_top = -12.0
-margin_right = 64.0
-rect_pivot_offset = Vector2( -100, 12 )
-mouse_filter = 2
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
+[node name="launch_bar" parent="." instance=ExtResource( 4 )]
+
+[node name="rolling_animator" type="AnimationPlayer" parent="."]
+anims/random_rolling = SubResource( 2 )
+
+[node name="dice_roll_sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="dice_launch_sound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_base_dice_body_entered"]

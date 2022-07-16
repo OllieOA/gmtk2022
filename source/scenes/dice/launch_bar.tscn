@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/_prototype/prototype_launch_bar_base.png" type="Texture" id=1]
+[ext_resource path="res://assets/_prototype/prototype_launch_bar_fill.png" type="Texture" id=2]
+[ext_resource path="res://source/scenes/dice/launch_bar.gd" type="Script" id=3]
+
+[node name="launch_bar" type="Node2D"]
+script = ExtResource( 3 )
+launch_bar = NodePath("launch_bar")
+
+[node name="launch_bar" type="TextureProgress" parent="."]
+margin_left = 100.0
+margin_top = -12.0
+margin_right = 292.0
+margin_bottom = 12.0
+rect_pivot_offset = Vector2( -100, 12 )
+mouse_filter = 2
+rounded = true
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
