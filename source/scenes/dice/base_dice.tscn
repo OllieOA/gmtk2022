@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://source/scenes/dice/base_dice.gd" type="Script" id=1]
 [ext_resource path="res://assets/_prototype/prototype_dice_base.png" type="Texture" id=2]
@@ -6,10 +6,17 @@
 [ext_resource path="res://assets/_prototype/prototype_launch_bar_base.png" type="Texture" id=4]
 [ext_resource path="res://assets/_prototype/prototype_launch_bar_fill.png" type="Texture" id=5]
 
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 2.0
+bounce = 0.2
+
 [node name="base_dice" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 128
 mass = 10.0
+physics_material_override = SubResource( 1 )
+gravity_scale = 10.0
+contacts_reported = 1
 script = ExtResource( 1 )
 base_sprite = NodePath("base_sprite")
 face_sprite = NodePath("face_sprite")

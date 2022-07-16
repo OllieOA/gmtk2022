@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dicebag-godot/Dicebag.gd"
 }, {
+"base": "BaseDice",
+"class": "PlayerDice",
+"language": "GDScript",
+"path": "res://source/scenes/dice/player_dice.gd"
+}, {
 "base": "Reference",
 "class": "PlayerInput",
 "language": "GDScript",
@@ -179,6 +184,7 @@ _global_script_class_icons={
 "BaseTask": "",
 "CurrentQueue": "",
 "Dicebag": "",
+"PlayerDice": "",
 "PlayerInput": "",
 "RMS2D_Material": "",
 "RMS2D_VertexProperties": "",
@@ -242,7 +248,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot_reset/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg", "res://addons/velopbot/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/rmsmartshape/plugin.cfg" )
 
 [importer_defaults]
 
