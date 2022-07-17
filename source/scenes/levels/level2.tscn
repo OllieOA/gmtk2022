@@ -1206,6 +1206,7 @@ _constraints = {
 _next_key = 4
 
 [node name="level2" instance=ExtResource( 1 )]
+level_number = 2
 next_scene = "title_screen"
 
 [node name="fairway_world_block" parent="world_blocks" index="0" instance=ExtResource( 2 )]

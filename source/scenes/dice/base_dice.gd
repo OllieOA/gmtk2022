@@ -10,6 +10,10 @@ export (NodePath) onready var rolling_animator = get_node(rolling_animator) as A
 export (NodePath) onready var hit_sound = get_node(hit_sound) as AudioStreamPlayer
 export (NodePath) onready var roll_sound = get_node(roll_sound) as AudioStreamPlayer
 
+export (NodePath) onready var grass_sound = get_node(grass_sound) as AudioStreamPlayer
+var grass_sound_timeout := true
+var grass_sound_timeout_timer: Timer
+
 onready var dicebag = Dicebag.new()
 
 # Effect modifiers
@@ -89,6 +93,12 @@ func _ready() -> void:
 	_friction_modifier_base = physics_material_override.friction
 
 	Event.connect("level_won", self, "_handle_level_won")
+
+	grass_sound_timeout_timer = Timer.new()
+	grass_sound_timeout_timer.wait_time = 0.5
+	grass_sound_timeout_timer.one_shot = true
+	grass_sound_timeout_timer.connect("timeout", self, "_handle_grass_timeout")
+	add_child(grass_sound_timeout_timer)
 
 
 func _physics_process(_delta: float) -> void:
@@ -214,10 +224,20 @@ func _on_base_dice_body_entered(body: Node) -> void:
 			elif body.is_in_group("bunker"):
 				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.BUNKER)
 				_terrain_launch_power_modifier = BaseWorldBlock.TERRAIN_MODIFIERS[BaseWorldBlock.TerrainType.BUNKER]
+
+	if linear_velocity.length() > 200 and grass_sound_timeout:
+		grass_sound_timeout_timer.start()
+		grass_sound.play()
+		grass_sound_timeout = false
 	
 
 func _handle_level_won() -> void:
 	_state = State.WON
+
+
+func _handle_grass_timeout() -> void:
+	grass_sound_timeout = true
+
 
 # SETTERS AND GETTERS
 

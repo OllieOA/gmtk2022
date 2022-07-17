@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://source/scenes/dice/base_dice.gd" type="Script" id=1]
 [ext_resource path="res://assets/dice/dice_base.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://source/scenes/dice/launch_bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/sounds/golf_ball_hit.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/rolling.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/grass_hit.ogg" type="AudioStream" id=7]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -46,6 +47,7 @@ launch_bar = NodePath("launch_bar")
 rolling_animator = NodePath("rolling_animator")
 hit_sound = NodePath("dice_launch_sound")
 roll_sound = NodePath("dice_roll_sound")
+grass_sound = NodePath("terrain_noise")
 
 [node name="base_sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -70,5 +72,8 @@ stream = ExtResource( 6 )
 
 [node name="dice_launch_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="terrain_noise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="body_entered" from="." to="." method="_on_base_dice_body_entered"]
