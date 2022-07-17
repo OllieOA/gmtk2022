@@ -1,0 +1,230 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://source/ui/game_ui.gd" type="Script" id=1]
+[ext_resource path="res://assets/themes/in_game_ui.tres" type="Theme" id=2]
+[ext_resource path="res://assets/dice/dice_icon_small_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/dice/dice_icon_small_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/dice/dice_icon_small_4.png" type="Texture" id=5]
+[ext_resource path="res://assets/dice/dice_icon_small_6.png" type="Texture" id=6]
+[ext_resource path="res://assets/dice/dice_icon_small_5.png" type="Texture" id=7]
+[ext_resource path="res://assets/dice/dice_icon_small_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/dice/dice_icon_medium_1.png" type="Texture" id=9]
+[ext_resource path="res://assets/themes/effect_title_dynamic_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/themes/tooltip_dynamic_font.tres" type="DynamicFontData" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[node name="game_ui" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="ui_elements" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+
+[node name="dice_effects" type="MarginContainer" parent="ui_elements"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="dice_effect_columns" type="HBoxContainer" parent="ui_elements/dice_effects"]
+margin_right = 314.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="available_effects" type="Panel" parent="ui_elements/dice_effects/dice_effect_columns"]
+margin_right = 42.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 42, 222 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="available_effect_rows" type="VBoxContainer" parent="ui_elements/dice_effects/dice_effect_columns/available_effects"]
+margin_left = 5.0
+margin_top = 5.0
+
+[node name="dice1" type="TextureRect" parent="ui_elements/dice_effects/dice_effect_columns/available_effects/available_effect_rows"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 8 )
+
+[node name="dice2" type="TextureRect" parent="ui_elements/dice_effects/dice_effect_columns/available_effects/available_effect_rows"]
+margin_top = 36.0
+margin_right = 32.0
+margin_bottom = 68.0
+texture = ExtResource( 3 )
+
+[node name="dice3" type="TextureRect" parent="ui_elements/dice_effects/dice_effect_columns/available_effects/available_effect_rows"]
+margin_top = 72.0
+margin_right = 32.0
+margin_bottom = 104.0
+texture = ExtResource( 4 )
+
+[node name="dice4" type="TextureRect" parent="ui_elements/dice_effects/dice_effect_columns/available_effects/available_effect_rows"]
+margin_top = 108.0
+margin_right = 32.0
+margin_bottom = 140.0
+texture = ExtResource( 5 )
+
+[node name="dice5" type="TextureRect" parent="ui_elements/dice_effects/dice_effect_columns/available_effects/available_effect_rows"]
+margin_top = 144.0
+margin_right = 32.0
+margin_bottom = 176.0
+texture = ExtResource( 7 )
+
+[node name="dice6" type="TextureRect" parent="ui_elements/dice_effects/dice_effect_columns/available_effects/available_effect_rows"]
+margin_top = 180.0
+margin_right = 32.0
+margin_bottom = 212.0
+texture = ExtResource( 6 )
+
+[node name="active_effect_rows" type="VBoxContainer" parent="ui_elements/dice_effects/dice_effect_columns"]
+margin_left = 46.0
+margin_right = 314.0
+margin_bottom = 222.0
+
+[node name="active_effect_title" type="Label" parent="ui_elements/dice_effects/dice_effect_columns/active_effect_rows"]
+margin_right = 268.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 10 )
+text = "Active Effect"
+
+[node name="active_effect_text_columns" type="HBoxContainer" parent="ui_elements/dice_effects/dice_effect_columns/active_effect_rows"]
+margin_top = 48.0
+margin_right = 268.0
+margin_bottom = 115.0
+
+[node name="active_effect_icon" type="TextureRect" parent="ui_elements/dice_effects/dice_effect_columns/active_effect_rows/active_effect_text_columns"]
+margin_right = 64.0
+margin_bottom = 67.0
+texture = ExtResource( 9 )
+
+[node name="active_effect_text" type="Label" parent="ui_elements/dice_effects/dice_effect_columns/active_effect_rows/active_effect_text_columns"]
+margin_left = 68.0
+margin_right = 268.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 200, 0 )
+text = "Active Effect Text ACtive Effect Text"
+autowrap = true
+
+[node name="terrain_effects" type="MarginContainer" parent="ui_elements"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -318.0
+margin_bottom = 222.0
+
+[node name="terrain_effect_columns" type="HBoxContainer" parent="ui_elements/terrain_effects"]
+margin_right = 318.0
+margin_bottom = 222.0
+grow_horizontal = 0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="active_effect_rows" type="VBoxContainer" parent="ui_elements/terrain_effects/terrain_effect_columns"]
+margin_right = 268.0
+margin_bottom = 222.0
+
+[node name="terrain_effect_title" type="Label" parent="ui_elements/terrain_effects/terrain_effect_columns/active_effect_rows"]
+margin_right = 268.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 10 )
+text = "Terrain Effect"
+align = 2
+
+[node name="terrain_effect_text_columns" type="HBoxContainer" parent="ui_elements/terrain_effects/terrain_effect_columns/active_effect_rows"]
+margin_top = 48.0
+margin_right = 268.0
+margin_bottom = 115.0
+
+[node name="terrain_effect_text" type="Label" parent="ui_elements/terrain_effects/terrain_effect_columns/active_effect_rows/terrain_effect_text_columns"]
+margin_right = 200.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 200, 0 )
+text = "Terrain Effect Text Terrain Effect Text"
+align = 2
+autowrap = true
+
+[node name="terrain_effect_icon" type="TextureRect" parent="ui_elements/terrain_effects/terrain_effect_columns/active_effect_rows/terrain_effect_text_columns"]
+margin_left = 204.0
+margin_right = 268.0
+margin_bottom = 67.0
+texture = ExtResource( 9 )
+
+[node name="available_effects" type="Panel" parent="ui_elements/terrain_effects/terrain_effect_columns"]
+margin_left = 272.0
+margin_right = 314.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 42, 222 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="available_effect_rows" type="VBoxContainer" parent="ui_elements/terrain_effects/terrain_effect_columns/available_effects"]
+margin_left = 5.0
+margin_top = 5.0
+
+[node name="terrain1" type="TextureRect" parent="ui_elements/terrain_effects/terrain_effect_columns/available_effects/available_effect_rows"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 8 )
+
+[node name="terrain2" type="TextureRect" parent="ui_elements/terrain_effects/terrain_effect_columns/available_effects/available_effect_rows"]
+margin_top = 36.0
+margin_right = 32.0
+margin_bottom = 68.0
+texture = ExtResource( 8 )
+
+[node name="terrain3" type="TextureRect" parent="ui_elements/terrain_effects/terrain_effect_columns/available_effects/available_effect_rows"]
+margin_top = 72.0
+margin_right = 32.0
+margin_bottom = 104.0
+texture = ExtResource( 8 )
+
+[node name="terrain4" type="TextureRect" parent="ui_elements/terrain_effects/terrain_effect_columns/available_effects/available_effect_rows"]
+margin_top = 108.0
+margin_right = 32.0
+margin_bottom = 140.0
+texture = ExtResource( 8 )
+
+[node name="score" type="MarginContainer" parent="ui_elements"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -44.5
+margin_right = 44.5
+margin_bottom = 104.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="score_rows" type="VBoxContainer" parent="ui_elements/score"]
+margin_left = 6.0
+margin_right = 82.0
+margin_bottom = 108.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="score_title" type="Label" parent="ui_elements/score/score_rows"]
+margin_right = 76.0
+margin_bottom = 44.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Score"
+
+[node name="score_best" type="Label" parent="ui_elements/score/score_rows"]
+margin_left = 3.0
+margin_top = 48.0
+margin_right = 73.0
+margin_bottom = 72.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 1 )
+text = "(Best: 00)"
+
+[node name="score" type="Label" parent="ui_elements/score/score_rows"]
+margin_left = 27.0
+margin_top = 76.0
+margin_right = 49.0
+margin_bottom = 108.0
+size_flags_horizontal = 4
+text = "00"

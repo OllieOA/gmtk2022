@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/prototype_dice_faces.png-33b29f2234d64d24568824d0ebe8f7ac.stex"
+path="res://.import/fill_tiles_1.png-26598009569b1eae0fd52235c375866d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/_prototype/prototype_dice_faces.png"
-dest_files=[ "res://.import/prototype_dice_faces.png-33b29f2234d64d24568824d0ebe8f7ac.stex" ]
+source_file="res://assets/tiles/fill_tiles_1.png"
+dest_files=[ "res://.import/fill_tiles_1.png-26598009569b1eae0fd52235c375866d.stex" ]
 
 [params]
 
@@ -19,8 +19,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
+flags/repeat=1
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

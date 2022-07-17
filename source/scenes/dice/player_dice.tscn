@@ -8,3 +8,7 @@ script = ExtResource( 2 )
 
 [node name="player_camera" type="Camera2D" parent="." index="7"]
 current = true
+
+[node name="flag_indicator" type="TextureRect" parent="." index="8"]
+margin_right = 40.0
+margin_bottom = 40.0

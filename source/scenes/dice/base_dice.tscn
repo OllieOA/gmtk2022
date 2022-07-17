@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://source/scenes/dice/base_dice.gd" type="Script" id=1]
-[ext_resource path="res://assets/_prototype/prototype_dice_base.png" type="Texture" id=2]
-[ext_resource path="res://assets/_prototype/prototype_dice_faces.png" type="Texture" id=3]
+[ext_resource path="res://assets/dice/dice_base.png" type="Texture" id=2]
+[ext_resource path="res://assets/dice/dice_faces.png" type="Texture" id=3]
 [ext_resource path="res://source/scenes/dice/launch_bar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -44,9 +44,11 @@ launch_bar = NodePath("launch_bar")
 rolling_animator = NodePath("rolling_animator")
 
 [node name="base_sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="face_sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 hframes = 7
 frame = 6

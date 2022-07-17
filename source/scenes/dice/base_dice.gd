@@ -11,7 +11,7 @@ onready var dicebag = Dicebag.new()
 
 # Effect modifiers
 var _max_power_modifier := 1.0 setget _set_max_power
-var _bounce_modifier := 1.0 setget _set_bounce_modifer
+var _bounce_modifier := 1.0 setget _set_bounce_modifier
 var _friction_modifier := 1.0 setget _set_friction_modifier
 var _score_modifier := 1 setget _set_score_modifier
 
@@ -66,7 +66,7 @@ const _NEXT_AI_STATE = {
 var _state: int = State.START
 
 # Movement variables
-const _VELOCITY_STOP_THRESHOLD = 50
+const _VELOCITY_STOP_THRESHOLD = 2
 const _BASE_LAUNCH_THRUST := 150
 var _slowed_enough := false
 
@@ -105,7 +105,10 @@ func _physics_process(_delta: float) -> void:
 			_state = State.ROLLING
 
 		State.ROLLING:
+			rolling_animator.playback_speed = clamp(1 - pow(_VELOCITY_STOP_THRESHOLD / linear_velocity.length(), 2), 0, 1)
 			if _slowed_enough:
+				rolling_animator.playback_speed = 1.0
+				linear_damp = 10
 				rolling_animator.stop()
 				_state = State.CHANGING_PROPERTIES
 
@@ -140,11 +143,16 @@ func _change_face_random():
 
 func launch_dice(normal_launch_vector: Vector2, launch_factor) -> void:
 	launch_bar.hide_launch_bar()
+	linear_damp = -1
 
 	var launch_thrust = normal_launch_vector * _BASE_LAUNCH_THRUST * launch_factor * _terrain_launch_power_modifier
 	
 	apply_central_impulse(launch_thrust)
-	apply_torque_impulse(-100)
+	
+	if dicebag.flip_coin():
+		apply_torque_impulse(100000)
+	else:
+		apply_torque_impulse(-100000)
 	
 	Event.emit_signal("player_launched")
 	_state = State.FLYING
@@ -175,7 +183,7 @@ func _set_max_power(val: float) -> void:
 	print("NEW MAX POWER: ", _max_power_modifier)
 	
 	
-func _set_bounce_modifer(val: float) -> void:
+func _set_bounce_modifier(val: float) -> void:
 	_bounce_modifier = val
 	_update_physics_material()
 	print("NEW BOUNCE MODIFIER: ", _bounce_modifier)

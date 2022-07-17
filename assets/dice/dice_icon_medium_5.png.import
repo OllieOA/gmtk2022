@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/prototype_launch_bar_base.png-f2be259009d87f55e082d73e60d44158.stex"
+path="res://.import/dice_icon_medium_5.png-535239015ccc648d84d9c42fee46884f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/_prototype/prototype_launch_bar_base.png"
-dest_files=[ "res://.import/prototype_launch_bar_base.png-f2be259009d87f55e082d73e60d44158.stex" ]
+source_file="res://assets/dice/dice_icon_medium_5.png"
+dest_files=[ "res://.import/dice_icon_medium_5.png-535239015ccc648d84d9c42fee46884f.stex" ]
 
 [params]
 

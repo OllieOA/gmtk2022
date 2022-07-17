@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 		launch_bar.rect_rotation = rad2deg(launch_vector.angle() + PI)
 
 		if Input.is_action_pressed("launch_click"):
-			launch_bar.value = global_position.distance_to(get_global_mouse_position()) / _LAUNCH_BAR_FACTOR
+			launch_bar.value = -20 + global_position.distance_to(get_global_mouse_position()) / _LAUNCH_BAR_FACTOR
 
 		if Input.is_action_just_released("launch_click"):
 			my_dice.launch_dice(launch_vector.normalized().rotated(PI), launch_bar.value)
