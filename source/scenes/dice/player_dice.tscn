@@ -7,8 +7,13 @@
 [node name="player_dice" groups=["player"] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="face_sprite" parent="." index="1"]
+modulate = Color( 0.109804, 0.109804, 0.109804, 1 )
+
 [node name="player_camera" type="Camera2D" parent="." index="7"]
 current = true
+zoom = Vector2( 1.5, 1.5 )
+limit_left = 0
 script = ExtResource( 3 )
 zoom_tween = NodePath("zoom_tween")
 pos_tween = NodePath("pos_tween")

@@ -9,8 +9,9 @@ export (NodePath) onready var terrain_effect_text = get_node(terrain_effect_text
 export (NodePath) onready var score_current = get_node(score_current) as Label
 export (NodePath) onready var score_best = get_node(score_best) as Label
 
-onready var dice_effect_small_icons := get_node("$ui_elements/dice_effects/dice_effect_columns/available_effects/available_effect_rows")
-onready var terrain_effect_small_icons := get_node("$ui_elements/terrain_effects/terrain_effect_columns/available_effects/available_effect_rows")
+export (NodePath) onready var  dice_effect_small_icons = get_node(dice_effect_small_icons)
+export (NodePath) onready var  terrain_effect_small_icons = get_node(terrain_effect_small_icons)
+
 
 const _DICE_EFFECT_ICONS = {
 	1: preload("res://assets/dice/dice_icon_medium_1.png"),
@@ -57,6 +58,13 @@ func _ready() -> void:
 	Event.connect("active_effect_changed", self, "_handle_active_effect_changed")
 	Event.connect("terrain_effect_changed", self, "_handle_terrain_effect_changed")
 
+	call_deferred("_update_tooltips")
+
+	Event.emit_signal("active_effect_changed", 5)
+	Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.FAIRWAY)
+
+
+func _update_tooltips() -> void:
 	for i in range(terrain_effect_small_icons.get_child_count()):
 		terrain_effect_small_icons.get_child(i).hint_tooltip = _TERRAIN_EFFECT_TEXT[_terrain_order[i]]
 

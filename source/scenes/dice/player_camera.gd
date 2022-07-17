@@ -18,14 +18,17 @@ onready var player_reference := get_parent()
 export (NodePath) onready var zoom_tween = get_node(zoom_tween) as Tween
 export (NodePath) onready var pos_tween = get_node(pos_tween) as Tween
 
+const _CAMERA_OFFSET = Vector2(200, 0)
+
 
 func _ready() -> void:
+	Event.connect("camera_limit_set", self, "_handle_camera_limit_set")
 	Event.connect("level_setup_complete", self, "_handle_level_setup")
 
 
 func _process(delta: float) -> void:
 	if not looking_at_map:
-		global_position = lerp(global_position, player_reference.global_position, 0.2)
+		global_position = lerp(global_position, player_reference.global_position + _CAMERA_OFFSET, 0.1)
 
 
 # Setting and handling
@@ -34,9 +37,9 @@ func _set_zoom_level(value: float) -> void:
 	_use_zoom_tween(_zoom_level)
 
 
-func _handle_level_setup(full_rect: Rect2) -> void:
-	var full_rect_top_left = full_rect.position
-	var full_rect_bottom_right = full_rect.size
+func _handle_camera_limit_set(bottom_right_limit: Vector2) -> void:
+	var full_rect_top_left = Vector2(0, 0)
+	var full_rect_bottom_right = bottom_right_limit
 
 	var full_rect_x = full_rect_bottom_right.x - full_rect_top_left.x
 	var full_rect_y = full_rect_bottom_right.y - full_rect_top_left.y
