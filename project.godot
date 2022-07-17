@@ -337,6 +337,7 @@ zoom_out={
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true
+environment/default_clear_color=Color( 0.584314, 0.772549, 0.741176, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
 quality/2d/use_pixel_snap=true

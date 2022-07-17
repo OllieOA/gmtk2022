@@ -31,6 +31,7 @@ terrain_effect_icon = NodePath("ui_elements/terrain_effects/terrain_effect_colum
 terrain_effect_text = NodePath("ui_elements/terrain_effects/terrain_effect_columns/terrain_effect_rows/terrain_effect_text_columns/terrain_effect_text")
 score_current = NodePath("ui_elements/score/score_rows/score")
 score_best = NodePath("ui_elements/score/score_rows/score_best")
+hole_number = NodePath("ui_elements/score/score_rows/hole_number")
 dice_effect_small_icons = NodePath("ui_elements/dice_effects/dice_effect_columns/available_effects/available_effect_rows")
 terrain_effect_small_icons = NodePath("ui_elements/terrain_effects/terrain_effect_columns/available_effects/available_effect_rows")
 win_box = NodePath("ui_elements/win_box")

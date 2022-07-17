@@ -35,6 +35,8 @@ func _ready() -> void:
 	Event.connect("player_launched", self, "_handle_player_launched")
 	Event.connect("level_won", self, "_handle_level_won")
 
+	ambient_sound.play()
+
 	
 func _handle_player_launched(score_to_add: int) -> void:
 	score_tracker.add_stroke(level_number, score_to_add)

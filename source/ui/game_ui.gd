@@ -8,6 +8,7 @@ export (NodePath) onready var terrain_effect_text = get_node(terrain_effect_text
 
 export (NodePath) onready var score_current = get_node(score_current) as Label
 export (NodePath) onready var score_best = get_node(score_best) as Label
+export (NodePath) onready var hole_number = get_node(hole_number) as Label
 
 export (NodePath) onready var dice_effect_small_icons = get_node(dice_effect_small_icons)
 export (NodePath) onready var terrain_effect_small_icons = get_node(terrain_effect_small_icons)
@@ -64,6 +65,8 @@ func _ready() -> void:
 	Event.connect("active_effect_changed", self, "_handle_active_effect_changed")
 	Event.connect("terrain_effect_changed", self, "_handle_terrain_effect_changed")
 	Event.connect("level_won", self, "_handle_level_won")
+	Event.connect("level_setup_complete", self, "_handle_level_setup")
+	Event.connect("update_best", self, "_handle_update_best")
 
 	call_deferred("_update_tooltips")
 
@@ -80,6 +83,10 @@ func _update_tooltips() -> void:
 
 
 # SIGNAL HANDLES
+func _handle_level_setup(level_number: int) -> void:
+	hole_number.text = "Hole %d" % level_number
+
+
 func _handle_strokes_updated(new_score: int) -> void:
 	score_current.text = "%d Strokes" % new_score
 
@@ -98,8 +105,11 @@ func _handle_level_won() -> void:
 	dice_box.hide()
 
 
-# Methods
+func _handle_update_best(new_best: int) -> void:
+	score_best.text = "(Best: %d)" % new_best
 
+
+# Methods
 func _set_new_dice_effect(new_number: int) -> void:
 	active_dice_effect_icon.texture = _DICE_EFFECT_ICONS[new_number]
 	active_dice_effect_text.text = _DICE_EFFECT_TEXT[new_number]

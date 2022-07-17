@@ -80,6 +80,7 @@ var _face_value := 0
 # END OF VARIABLES
 
 func _ready() -> void:
+	dicebag.set_up_rng()
 	# Dependency injection
 	launch_bar.my_dice = self
 	launch_bar.init_launch_bar()

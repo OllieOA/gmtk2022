@@ -32,6 +32,7 @@ Track external things we use here:
 - SFX:
   - AGFX (Attribution 3.0)
   - jittels (Attribution 3.0)
+  - InspectorJ (Attribution 4.0)
 - UI:
   - [blah](https://youtu.be/dQw4w9WgXcQ)
 
