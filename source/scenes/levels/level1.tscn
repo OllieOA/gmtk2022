@@ -478,9 +478,9 @@ width = 1.0
 
 [sub_resource type="Resource" id=67]
 script = ExtResource( 5 )
-position = Vector2( 368, -56 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
+position = Vector2( 624.969, -133.949 )
+point_in = Vector2( -200, 56 )
+point_out = Vector2( 200, -48 )
 properties = SubResource( 66 )
 
 [sub_resource type="Resource" id=68]
@@ -491,9 +491,9 @@ width = 1.0
 
 [sub_resource type="Resource" id=69]
 script = ExtResource( 5 )
-position = Vector2( 160, 0 )
-point_in = Vector2( -96, 0 )
-point_out = Vector2( 96, 0 )
+position = Vector2( 1100.89, -61.2134 )
+point_in = Vector2( -168, 0 )
+point_out = Vector2( 0, 0 )
 properties = SubResource( 68 )
 
 [sub_resource type="Resource" id=70]
@@ -504,7 +504,7 @@ width = 1.0
 
 [sub_resource type="Resource" id=71]
 script = ExtResource( 5 )
-position = Vector2( 1280, -64 )
+position = Vector2( 368, -56 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 70 )
@@ -517,9 +517,9 @@ width = 1.0
 
 [sub_resource type="Resource" id=73]
 script = ExtResource( 5 )
-position = Vector2( 1280, 896 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
+position = Vector2( 160, 0 )
+point_in = Vector2( -96, 0 )
+point_out = Vector2( 96, 0 )
 properties = SubResource( 72 )
 
 [sub_resource type="Resource" id=74]
@@ -530,7 +530,7 @@ width = 1.0
 
 [sub_resource type="Resource" id=75]
 script = ExtResource( 5 )
-position = Vector2( 0, 896 )
+position = Vector2( 1280, -64 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 74 )
@@ -543,9 +543,9 @@ width = 1.0
 
 [sub_resource type="Resource" id=77]
 script = ExtResource( 5 )
-position = Vector2( 624.969, -133.949 )
-point_in = Vector2( -200, 56 )
-point_out = Vector2( 200, -48 )
+position = Vector2( 1280, 896 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
 properties = SubResource( 76 )
 
 [sub_resource type="Resource" id=78]
@@ -556,8 +556,8 @@ width = 1.0
 
 [sub_resource type="Resource" id=79]
 script = ExtResource( 5 )
-position = Vector2( 1100.89, -61.2134 )
-point_in = Vector2( -168, 0 )
+position = Vector2( 0, 896 )
+point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 78 )
 
@@ -566,13 +566,13 @@ script = ExtResource( 4 )
 _points = {
 0: SubResource( 63 ),
 3: SubResource( 65 ),
-4: SubResource( 77 ),
-5: SubResource( 79 ),
-6: SubResource( 67 ),
-7: SubResource( 69 ),
-9: SubResource( 71 ),
-10: SubResource( 73 ),
-11: SubResource( 75 )
+4: SubResource( 67 ),
+5: SubResource( 69 ),
+6: SubResource( 71 ),
+7: SubResource( 73 ),
+9: SubResource( 75 ),
+10: SubResource( 77 ),
+11: SubResource( 79 )
 }
 _point_order = [ 0, 7, 6, 4, 5, 9, 10, 11, 3 ]
 _constraints = {
@@ -854,6 +854,7 @@ _next_key = 4
 
 [node name="level1" instance=ExtResource( 1 )]
 level_number = 1
+next_scene = "level2"
 
 [node name="fairway_world_block" parent="world_blocks" index="0" instance=ExtResource( 2 )]
 position = Vector2( 0, -720 )
@@ -889,7 +890,7 @@ position = Vector2( 3840, -896 )
 _points = SubResource( 80 )
 
 [node name="CollisionPolygon2D" parent="world_blocks/fairway_world_block3/base_shape" index="1"]
-polygon = PoolVector2Array( -3.31372, -3.31372, 160, -0.00866699, 196.497, -2.42865, 232.995, -8.77258, 299.992, -28.0232, 367.994, -56.0174, 624.964, -133.969, 661.425, -141.058, 695.95, -144.621, 728.762, -145.075, 760.085, -142.858, 819.153, -132.051, 874.932, -115.584, 983.785, -79.3459, 1040.42, -66.3273, 1070.06, -62.5711, 1100.89, -61.2205, 1283.35, -67.4023, 1283.31, 899.314, -3.31372, 899.314 )
+polygon = PoolVector2Array( -3.31372, -3.31372, 160, -0.00866699, 196.497, -2.42865, 232.995, -8.77258, 299.992, -28.0232, 367.994, -56.0174, 624.964, -133.969, 661.425, -141.058, 695.949, -144.621, 728.761, -145.075, 760.084, -142.858, 819.152, -132.051, 874.93, -115.583, 983.782, -79.3459, 1040.41, -66.3273, 1070.06, -62.5711, 1100.89, -61.2204, 1283.35, -67.4023, 1283.31, 899.314, -3.31372, 899.314 )
 
 [node name="green_world_block" parent="world_blocks" index="4" instance=ExtResource( 7 )]
 position = Vector2( 5120, -960 )
@@ -910,13 +911,13 @@ _points = SubResource( 118 )
 [node name="CollisionPolygon2D" parent="world_blocks/rough_world_block2/base_shape" index="1"]
 polygon = PoolVector2Array( -3.31348, -3.31372, 320, -0.0020752, 342.841, -0.742188, 363.608, -2.87061, 382.664, -6.28687, 400.368, -10.8961, 433.195, -23.2222, 464.999, -39.0016, 537.122, -77.6318, 583.262, -98.775, 639.988, -120.041, 699.433, -132.877, 752.5, -137.292, 923.5, -126.784, 942.553, -128.091, 961.558, -131.178, 980.656, -136.371, 999.998, -144.007, 1118.99, -183.02, 1159.99, -192.093, 1283.31, -195.314, 1283.31, 963.314, -3.31348, 963.314 )
 
-[node name="player_dice" parent="." index="2"]
+[node name="player_dice" parent="." index="3"]
 position = Vector2( 576, -1136 )
 
-[node name="invisible_wall_left" parent="." index="5"]
+[node name="invisible_wall_left" parent="." index="6"]
 position = Vector2( 160, 0 )
 
-[node name="invisible_wall_right" parent="." index="6"]
+[node name="invisible_wall_right" parent="." index="7"]
 position = Vector2( 7808, 0 )
 
 [editable path="world_blocks/fairway_world_block"]

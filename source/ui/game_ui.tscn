@@ -299,3 +299,4 @@ margin_bottom = 45.0
 text = "Next"
 
 [connection signal="pressed" from="ui_elements/win_box/you_win_contents/button_contents/main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="ui_elements/win_box/you_win_contents/button_contents/next_level" to="." method="_on_next_level_pressed"]

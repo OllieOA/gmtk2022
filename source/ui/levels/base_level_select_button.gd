@@ -8,4 +8,4 @@ func _ready() -> void:
 
 
 func _on_base_level_pressed() -> void:
-	pass
+	SceneManager.load_scene(target_level)

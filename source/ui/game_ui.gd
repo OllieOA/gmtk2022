@@ -50,10 +50,10 @@ const _TERRAIN_EFFECT_ICONS = {
 }
 
 const _TERRAIN_EFFECT_TEXT = {
-	BaseWorldBlock.TerrainType.GREEN: "Green: Low friction - quite slippery!",
-	BaseWorldBlock.TerrainType.FAIRWAY: "Fairway: Normal friction - normal launch power",
-	BaseWorldBlock.TerrainType.ROUGH: "Rough: High friction - reduces launch power",
-	BaseWorldBlock.TerrainType.BUNKER: "Bunker: Very High friction - significantly reduces launch power",
+	BaseWorldBlock.TerrainType.GREEN: "Green: Watch out! - quite slippery",
+	BaseWorldBlock.TerrainType.FAIRWAY: "Fairway: Best ground - extra launch power",
+	BaseWorldBlock.TerrainType.ROUGH: "Rough: Hard ground - reduces launch power",
+	BaseWorldBlock.TerrainType.BUNKER: "Bunker: Very Hard ground - significantly reduces launch power",
 }
 
 
@@ -106,7 +106,10 @@ func _handle_level_won() -> void:
 
 
 func _handle_update_best(new_best: int) -> void:
-	score_best.text = "(Best: %d)" % new_best
+	if new_best == -1:
+		score_best.text = "(Best: --)"
+	else:
+		score_best.text = "(Best: %d)" % new_best
 
 
 # Methods
@@ -122,3 +125,7 @@ func _set_new_terrain_effect(terrain_type: int) -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	SceneManager.load_scene("title_screen")
+
+
+func _on_next_level_pressed() -> void:
+	Event.emit_signal("next_level_requested")

@@ -19,7 +19,7 @@ var terrain_modifier: int
 var terrain_name: String
 
 const TERRAIN_MODIFIERS = {
-	TerrainType.FAIRWAY: 1.0,
+	TerrainType.FAIRWAY: 1.2,
 	TerrainType.ROUGH: 0.8,
 	TerrainType.BUNKER: 0.5,
 	TerrainType.GREEN: 1.0,

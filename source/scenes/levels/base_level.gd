@@ -6,7 +6,10 @@ export (NodePath) onready var block_reference = get_node(block_reference) as Nod
 export (NodePath) onready var ambient_sound = get_node(ambient_sound) as AudioStreamPlayer
 export (NodePath) onready var win_sound = get_node(win_sound) as AudioStreamPlayer
 
+export (NodePath) onready var cloud_layer = get_node(cloud_layer) as Node2D
+
 export (int) var level_number := 0
+export (String) var next_scene := ""
 
 var _camera_limit_bottom_right := Vector2.ZERO
 
@@ -28,14 +31,22 @@ func _ready() -> void:
 	# Load score tracker
 	if File.new().file_exists(_SCORE_TRACKER_PATH):
 		# Working my ass off here, let's g0000000
-		score_tracker = ResourceSaver.load(_SCORE_TRACKER_PATH)
+		score_tracker = ResourceLoader.load(_SCORE_TRACKER_PATH)
 	else:
 		score_tracker = ScoreTracker.new()
 
+	score_tracker.refresh_score(level_number)
+
+	print("LOADED SCORE TRACKER:", score_tracker.best_score_tracker)
+
 	Event.connect("player_launched", self, "_handle_player_launched")
 	Event.connect("level_won", self, "_handle_level_won")
+	Event.connect("next_level_requested", self, "_handle_next_level_requested")
 
 	ambient_sound.play()
+
+	Event.emit_signal("update_best", score_tracker.get_best_score(level_number))
+	Event.emit_signal("level_setup_complete", level_number)
 
 	
 func _handle_player_launched(score_to_add: int) -> void:
@@ -43,4 +54,11 @@ func _handle_player_launched(score_to_add: int) -> void:
 
 
 func _handle_level_won() -> void:
+	score_tracker.set_best_score(level_number)
+	var result = ResourceSaver.save(_SCORE_TRACKER_PATH, score_tracker)
+	assert(result == OK)
 	win_sound.play()
+
+
+func _handle_next_level_requested() -> void:
+	SceneManager.load_scene(next_scene)

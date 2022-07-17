@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/sounds/wind.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 1168 )
+extents = Vector2( 64, 1560 )
 
 [node name="base_level" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,8 +15,11 @@ player_reference = NodePath("player_dice")
 block_reference = NodePath("world_blocks")
 ambient_sound = NodePath("ambient_sound")
 win_sound = NodePath("win_sound")
+cloud_layer = NodePath("cloud_layer")
 
 [node name="game_ui" parent="." instance=ExtResource( 2 )]
+
+[node name="cloud_layer" type="Node2D" parent="."]
 
 [node name="world_blocks" type="Node2D" parent="."]
 

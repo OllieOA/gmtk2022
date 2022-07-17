@@ -22,8 +22,8 @@ var _score_modifier := 1 setget _set_score_modifier
 var _bounce_modifier_base: float
 var _friction_modifier_base: float
 
-const _MAX_POWER_INCREASE = 1.5
-const _MAX_POWER_DECREASE = 0.5
+const _MAX_POWER_INCREASE = 1.4
+const _MAX_POWER_DECREASE = 0.7
 const _FRICTION_DECREASE = 0.1
 const _BOUNCE_INCREASE = 2.0
 
@@ -43,7 +43,6 @@ var _reset_method := []
 
 # Terrain modifiers
 var _terrain_launch_power_modifier := 1.0
-var _terrain_friction_modifier := 1.0
 
 # States
 enum State {
@@ -69,7 +68,7 @@ const _NEXT_AI_STATE = {
 var _state: int = State.START
 
 # Movement variables
-const _VELOCITY_STOP_THRESHOLD = 2
+const _VELOCITY_STOP_THRESHOLD = 5
 const _BASE_LAUNCH_THRUST := 150
 var _slowed_enough := false
 
@@ -90,6 +89,7 @@ func _ready() -> void:
 	_friction_modifier_base = physics_material_override.friction
 
 	Event.connect("level_won", self, "_handle_level_won")
+	apply_random_torque(50000)
 
 
 func _physics_process(_delta: float) -> void:
@@ -164,18 +164,23 @@ func launch_dice(normal_launch_vector: Vector2, launch_factor) -> void:
 	linear_damp = -1
 	angular_damp = -1
 
+	print("TERRAIN_MOD = ", _terrain_launch_power_modifier)
 	var launch_thrust = normal_launch_vector * _BASE_LAUNCH_THRUST * launch_factor * _terrain_launch_power_modifier
 	
 	apply_central_impulse(launch_thrust)
 	
-	if dicebag.flip_coin():  # Add random torque to encourage a roll
-		apply_torque_impulse(100000)
-	else:
-		apply_torque_impulse(-100000)
+	apply_random_torque(100000)
 	
 	if is_in_group("player"):
 		Event.emit_signal("player_launched", _score_modifier)
 		_state = State.FLYING
+
+
+func apply_random_torque(amount: float) -> void:
+	if dicebag.flip_coin():  # Add random torque to encourage a roll
+		apply_torque_impulse(amount)
+	else:
+		apply_torque_impulse(-amount)
 
 
 func next_state() -> void:
@@ -198,12 +203,16 @@ func _on_base_dice_body_entered(body: Node) -> void:
 		if body.is_in_group("terrain"):
 			if body.is_in_group("rough"):
 				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.ROUGH)
+				_terrain_launch_power_modifier = BaseWorldBlock.TERRAIN_MODIFIERS[BaseWorldBlock.TerrainType.ROUGH]
 			elif body.is_in_group("green"):
 				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.GREEN)
+				_terrain_launch_power_modifier = BaseWorldBlock.TERRAIN_MODIFIERS[BaseWorldBlock.TerrainType.GREEN]
 			elif body.is_in_group("fairway"):
 				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.FAIRWAY)
+				_terrain_launch_power_modifier = BaseWorldBlock.TERRAIN_MODIFIERS[BaseWorldBlock.TerrainType.FAIRWAY]
 			elif body.is_in_group("bunker"):
 				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.BUNKER)
+				_terrain_launch_power_modifier = BaseWorldBlock.TERRAIN_MODIFIERS[BaseWorldBlock.TerrainType.BUNKER]
 	
 
 func _handle_level_won() -> void:
@@ -213,6 +222,7 @@ func _handle_level_won() -> void:
 
 func _set_max_power(val: float) -> void:
 	_max_power_modifier = val
+	Event.emit_signal("max_power_modifier_updated", _max_power_modifier)
 	# print("NEW MAX POWER: ", _max_power_modifier)
 	
 	

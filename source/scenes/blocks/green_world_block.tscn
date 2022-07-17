@@ -18,7 +18,7 @@
 extents = Vector2( 120, 40 )
 
 [sub_resource type="PhysicsMaterial" id=63]
-friction = 0.2
+friction = 0.1
 rough = true
 bounce = 0.01
 
