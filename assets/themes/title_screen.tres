@@ -1,0 +1,49 @@
+[gd_resource type="Theme" load_steps=8 format=2]
+
+[ext_resource path="res://assets/themes/title_button_dynamic_font.tres" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 8.0
+bg_color = Color( 0.74902, 0.74902, 0.74902, 1 )
+border_color = Color( 0.92549, 0.92549, 0.92549, 1 )
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 8.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.388235, 0.388235, 0.388235, 1 )
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.501961, 0.501961, 0.501961, 0.501961 )
+
+[resource]
+Button/fonts/font = SubResource( 1 )
+Button/styles/focus = SubResource( 7 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+Panel/styles/panel = SubResource( 6 )

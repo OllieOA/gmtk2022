@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://source/scenes/blocks/base_world_block.gd" type="Script" id=11]
+
+[node name="base_world_block" type="Node2D" groups=["terrain"]]
+script = ExtResource( 11 )
+hit_player = NodePath("hit_noise")
+bottom_right_limit = NodePath("bottom_right_limit")
+
+[node name="hit_noise" type="AudioStreamPlayer" parent="."]
+bus = "Sound Effects"
+
+[node name="bottom_right_limit" type="Position2D" parent="."]
+position = Vector2( 1280, 720 )

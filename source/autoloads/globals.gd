@@ -8,4 +8,3 @@ extends Node
 #	< 1.0 is slowed down
 #	> 1.0 is speed up
 var time_modifier: float = 1.0
-

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://source/ui/discord_link.gd" type="Script" id=1]
+[ext_resource path="res://assets/title/icon_discord.png" type="Texture" id=2]
+
+[node name="discord_link" type="Button"]
+margin_right = 96.0
+margin_bottom = 112.0
+icon = ExtResource( 2 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_DiscordLink_pressed"]
