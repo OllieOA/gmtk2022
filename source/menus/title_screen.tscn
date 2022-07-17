@@ -56,17 +56,15 @@ start_box = NodePath("button_area/start_game")
 level_select_box = NodePath("button_area/level_selection_menu")
 credits_box = NodePath("credits_container")
 level_select_grid = NodePath("button_area/level_selection_menu/level_grid")
+cloud_layer = NodePath("title_background/cloud_layer")
+cloud_generator = ExtResource( 10 )
 
 [node name="title_background" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 8 )
 
-[node name="cloud_layer" type="Control" parent="title_background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="cloud" parent="title_background/cloud_layer" instance=ExtResource( 10 )]
+[node name="cloud_layer" type="Node2D" parent="title_background"]
 
 [node name="title_text" type="TextureRect" parent="."]
 margin_right = 40.0

@@ -1,15 +1,24 @@
-extends Node2D
+class_name Cloud extends Node2D
 
-# export (NodePath)
+export (NodePath) onready var sprite = get_node(sprite) as Sprite
 var rng = RandomNumberGenerator.new()
-var dice_bag = Dicebag.new()
+
+const _MOVE_SPEED = 100
+
+const _KILL_AT = -300
 
 func _ready() -> void:
-	dice_bag.set_up_rng()
 	rng.randomize()
-	if rng.randf() < 0.5:
+	if rng.randf() < 0.65:
 		queue_free()
-	else:
-		pass
-		# var frame = dice_bag.roll_dice()
+
+
+func _process(delta) -> void:
+	global_position -= Vector2(delta * _MOVE_SPEED, 0)
+	if global_position.x < _KILL_AT:
+		queue_free()
+
+
+func set_frame(frame_num: int) -> void:
+	sprite.frame = frame_num
 

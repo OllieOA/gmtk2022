@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://source/scenes/levels/base_level.gd" type="Script" id=1]
 [ext_resource path="res://source/ui/game_ui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/scenes/dice/player_dice.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/polite_clap.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/objects/tee.png" type="Texture" id=5]
+[ext_resource path="res://source/scenes/blocks/cloud.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 2592 )
@@ -15,10 +16,12 @@ player_reference = NodePath("player_dice")
 block_reference = NodePath("world_blocks")
 win_sound = NodePath("win_sound")
 cloud_layer = NodePath("cloud_layer")
+cloud_generator = ExtResource( 6 )
 
 [node name="game_ui" parent="." instance=ExtResource( 2 )]
 
 [node name="cloud_layer" type="Node2D" parent="."]
+z_index = -7
 
 [node name="world_blocks" type="Node2D" parent="."]
 

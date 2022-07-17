@@ -763,7 +763,7 @@ width = 1.0
 
 [sub_resource type="Resource" id=106]
 script = ExtResource( 5 )
-position = Vector2( 960, 256 )
+position = Vector2( 1024, 192 )
 point_in = Vector2( -96, 64 )
 point_out = Vector2( 96, -56 )
 properties = SubResource( 105 )
@@ -776,20 +776,20 @@ width = 1.0
 
 [sub_resource type="Resource" id=108]
 script = ExtResource( 5 )
-position = Vector2( 448, 384 )
+position = Vector2( 600, 320 )
 point_in = Vector2( -168, 0 )
 point_out = Vector2( 168, 8 )
 properties = SubResource( 107 )
 
 [sub_resource type="Resource" id=109]
 script = ExtResource( 3 )
-texture_idx = 0
+texture_idx = 5
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id=110]
 script = ExtResource( 5 )
-position = Vector2( 1280, 0 )
+position = Vector2( 1288, -8 )
 point_in = Vector2( 0, 0 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 109 )
@@ -1633,7 +1633,7 @@ z_index = -1
 _points = SubResource( 121 )
 
 [node name="CollisionPolygon2D" parent="world_blocks/bunker_world_block/base_shape" index="1"]
-polygon = PoolVector2Array( 224.063, 135.93, 228.404, 140.923, 232.599, 146.683, 240.538, 160.426, 255.625, 195, 291.022, 277.989, 302.639, 298.625, 315.972, 318.173, 331.285, 336.136, 339.776, 344.363, 348.882, 351.991, 358.632, 358.963, 369.063, 365.214, 380.212, 370.681, 392.114, 375.298, 404.808, 379.002, 418.328, 381.729, 432.713, 383.412, 448, 383.996, 514.296, 383.406, 585.372, 376.355, 730.993, 346.975, 863.117, 304.106, 917.319, 280.185, 959.972, 255.958, 475.801, 572.538, 19.1636, 27.1506, 31.4263, 38.8135, 45.1406, 49.3518, 75.8071, 67.6216, 109.002, 82.9949, 174.377, 109.12, 202.242, 121.938, 214.025, 128.742 )
+polygon = PoolVector2Array( 224.012, 135.985, 279.392, 184.979, 367.014, 245.978, 419.869, 274.418, 477.131, 297.983, 507.032, 307.123, 537.581, 314.049, 568.621, 318.444, 600, 319.993, 662.515, 319.4, 723.622, 312.358, 782.668, 299.877, 838.992, 282.979, 940.861, 240.096, 1023.98, 191.975, 477.82, 570.56, 19.1636, 27.1506, 31.4263, 38.8135, 45.1406, 49.3518, 75.8071, 67.6216, 109.002, 82.9949, 174.377, 109.12, 202.242, 121.938, 214.025, 128.742 )
 
 [node name="fairway_world_block6" parent="world_blocks" index="7" instance=ExtResource( 2 )]
 position = Vector2( 8960, -3072 )
@@ -1693,7 +1693,7 @@ _points = SubResource( 217 )
 polygon = PoolVector2Array( -3.88477, -8.51532, 82.3818, 71.4917, 126.71, 104.615, 173.01, 133.982, 221.179, 158.109, 245.936, 167.74, 271.128, 175.488, 296.743, 181.173, 322.768, 184.608, 349.189, 185.606, 376, 183.994, 429.027, 177.901, 479.243, 166.849, 565.99, 136.977, 625.745, 108.616, 647.997, 95.9949, 673.116, 79.859, 740.991, 44.9809, 787.447, 26.8433, 840.369, 11.6002, 898.357, 1.80847, 928.811, -0.251648, 960, -0.000732422, 1183, 5.98425, 1283.45, -3.67297, 1283.31, 579.314, -3.31348, 579.314 )
 
 [node name="player_dice" parent="." index="3"]
-position = Vector2( 376, -1192 )
+position = Vector2( 552, -1160 )
 
 [node name="invisible_wall_right" parent="." index="6"]
 position = Vector2( 14776, 0 )
