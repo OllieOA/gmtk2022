@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/objects/tee.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 1560 )
+extents = Vector2( 60, 2592 )
 
 [node name="base_level" type="Node2D"]
 script = ExtResource( 1 )

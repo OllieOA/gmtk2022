@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=2]
+[gd_scene load_steps=128 format=2]
 
 [ext_resource path="res://source/scenes/levels/base_level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/scenes/blocks/fairway_world_block.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://addons/rmsmartshape/shapes/point.gd" type="Script" id=5]
 [ext_resource path="res://source/scenes/blocks/rough_world_block.tscn" type="PackedScene" id=6]
 [ext_resource path="res://source/scenes/blocks/green_world_block.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/themes/title_button_dynamic_font.tres" type="DynamicFontData" id=8]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
@@ -852,6 +853,10 @@ _constraints = {
 }
 _next_key = 4
 
+[sub_resource type="DynamicFont" id=119]
+size = 30
+font_data = ExtResource( 8 )
+
 [node name="level1" instance=ExtResource( 1 )]
 level_number = 1
 next_scene = "level2"
@@ -925,6 +930,34 @@ position = Vector2( 176, -720 )
 
 [node name="tee2" parent="." index="8"]
 position = Vector2( 704, -728 )
+
+[node name="tutorial1" type="Label" parent="." index="9"]
+margin_left = 288.0
+margin_top = -688.0
+margin_right = 848.0
+margin_bottom = -613.0
+custom_fonts/font = SubResource( 119 )
+text = "Left Click and drag behind the die to launch it!
+Watch the power meter to gauge your shot power!"
+align = 1
+
+[node name="tutorial2" type="Label" parent="." index="10"]
+margin_left = 1976.0
+margin_top = -872.0
+margin_right = 2536.0
+margin_bottom = -797.0
+custom_fonts/font = SubResource( 119 )
+text = "The Rough is hard to get out of, try to avoid it!"
+align = 1
+
+[node name="tutorial3" type="Label" parent="." index="11"]
+margin_left = 5072.0
+margin_top = -920.0
+margin_right = 5632.0
+margin_bottom = -845.0
+custom_fonts/font = SubResource( 119 )
+text = "Zoom in and out with the scroll wheel!"
+align = 1
 
 [editable path="world_blocks/fairway_world_block"]
 [editable path="world_blocks/rough_world_block"]
