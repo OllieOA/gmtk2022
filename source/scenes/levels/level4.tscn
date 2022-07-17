@@ -763,7 +763,7 @@ width = 1.0
 
 [sub_resource type="Resource" id=106]
 script = ExtResource( 5 )
-position = Vector2( 1024, 192 )
+position = Vector2( 1008, 56 )
 point_in = Vector2( -96, 64 )
 point_out = Vector2( 96, -56 )
 properties = SubResource( 105 )
@@ -783,14 +783,14 @@ properties = SubResource( 107 )
 
 [sub_resource type="Resource" id=109]
 script = ExtResource( 3 )
-texture_idx = 5
+texture_idx = 7
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id=110]
 script = ExtResource( 5 )
 position = Vector2( 1288, -8 )
-point_in = Vector2( 0, 0 )
+point_in = Vector2( -136, 88 )
 point_out = Vector2( 0, 0 )
 properties = SubResource( 109 )
 
@@ -1633,7 +1633,7 @@ z_index = -1
 _points = SubResource( 121 )
 
 [node name="CollisionPolygon2D" parent="world_blocks/bunker_world_block/base_shape" index="1"]
-polygon = PoolVector2Array( 224.012, 135.985, 279.392, 184.979, 367.014, 245.978, 419.869, 274.418, 477.131, 297.983, 507.032, 307.123, 537.581, 314.049, 568.621, 318.444, 600, 319.993, 662.515, 319.4, 723.622, 312.358, 782.668, 299.877, 838.992, 282.979, 940.861, 240.096, 1023.98, 191.975, 477.82, 570.56, 19.1636, 27.1506, 31.4263, 38.8135, 45.1406, 49.3518, 75.8071, 67.6216, 109.002, 82.9949, 174.377, 109.12, 202.242, 121.938, 214.025, 128.742 )
+polygon = PoolVector2Array( 224.012, 135.985, 279.392, 184.979, 367.014, 245.978, 419.869, 274.418, 477.131, 297.983, 507.032, 307.123, 537.581, 314.049, 568.621, 318.444, 600, 319.997, 615.679, 320.116, 631.21, 319.033, 661.82, 313.546, 691.802, 304.069, 721.117, 291.11, 749.73, 275.196, 777.602, 256.848, 830.991, 214.989, 969.788, 86.0366, 1007.96, 55.9382, 1025.46, 46.9956, 1042.01, 40.7554, 1057.83, 36.8169, 1073.12, 34.7009, 1133, 35.9995, 1164.95, 36.1372, 1182.13, 34.5437, 1200.37, 31.2329, 1219.88, 25.7683, 1240.85, 17.7041, 1263.49, 6.59375, 477.857, 570.679, 19.1636, 27.1506, 31.4263, 38.8135, 45.1406, 49.3518, 75.8071, 67.6216, 109.002, 82.9949, 174.377, 109.12, 202.242, 121.938, 214.025, 128.742 )
 
 [node name="fairway_world_block6" parent="world_blocks" index="7" instance=ExtResource( 2 )]
 position = Vector2( 8960, -3072 )
