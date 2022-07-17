@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/themes/title_screen.tres" type="Theme" id=1]
 [ext_resource path="res://source/ui/itch_link.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/title/title_image_text.png" type="Texture" id=7]
 [ext_resource path="res://assets/title/title_image_base.png" type="Texture" id=8]
 [ext_resource path="res://assets/themes/in_game_ui.tres" type="Theme" id=9]
+[ext_resource path="res://source/scenes/blocks/cloud.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 5.0
@@ -64,6 +65,8 @@ texture = ExtResource( 8 )
 [node name="cloud_layer" type="Control" parent="title_background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="cloud" parent="title_background/cloud_layer" instance=ExtResource( 10 )]
 
 [node name="title_text" type="TextureRect" parent="."]
 margin_right = 40.0
