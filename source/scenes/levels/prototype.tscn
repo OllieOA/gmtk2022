@@ -1,181 +1,9 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://source/scenes/dice/base_dice.gd" type="Script" id=1]
 [ext_resource path="res://source/scenes/dice/player_dice.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/rmsmartshape/shapes/shape_closed.gd" type="Script" id=3]
-[ext_resource path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" type="Script" id=4]
-[ext_resource path="res://addons/rmsmartshape/normal_range.gd" type="Script" id=5]
-[ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=6]
-[ext_resource path="res://addons/rmsmartshape/shapes/point.gd" type="Script" id=7]
-[ext_resource path="res://addons/rmsmartshape/materials/edge_material.gd" type="Script" id=8]
-[ext_resource path="res://addons/rmsmartshape/materials/shape_material.gd" type="Script" id=9]
-[ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=10]
+[ext_resource path="res://source/scenes/blocks/base_world_block.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/ui/game_ui.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/tiles/rough_tiles.png" type="Texture" id=12]
-[ext_resource path="res://assets/tiles/fill_tiles_1.png" type="Texture" id=13]
-
-[sub_resource type="Resource" id=26]
-script = ExtResource( 10 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=27]
-script = ExtResource( 7 )
-position = Vector2( 250.069, 53.7744 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 26 )
-
-[sub_resource type="Resource" id=28]
-script = ExtResource( 10 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=29]
-script = ExtResource( 7 )
-position = Vector2( 1312.76, 34.1467 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 28 )
-
-[sub_resource type="Resource" id=30]
-script = ExtResource( 10 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=31]
-script = ExtResource( 7 )
-position = Vector2( 1784.44, 54.4653 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 30 )
-
-[sub_resource type="Resource" id=32]
-script = ExtResource( 10 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=33]
-script = ExtResource( 7 )
-position = Vector2( 250.069, 53.7744 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 32 )
-
-[sub_resource type="Resource" id=34]
-script = ExtResource( 10 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=35]
-script = ExtResource( 7 )
-position = Vector2( 2150.32, 345.232 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 34 )
-
-[sub_resource type="Resource" id=36]
-script = ExtResource( 10 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=37]
-script = ExtResource( 7 )
-position = Vector2( 259.211, 783.007 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 36 )
-
-[sub_resource type="Resource" id=38]
-script = ExtResource( 10 )
-texture_idx = 9
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=39]
-script = ExtResource( 7 )
-position = Vector2( 728.793, 41.3655 )
-point_in = Vector2( -62.1797, -69.6713 )
-point_out = Vector2( 62.1797, 69.6713 )
-properties = SubResource( 38 )
-
-[sub_resource type="Resource" id=40]
-script = ExtResource( 10 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=41]
-script = ExtResource( 7 )
-position = Vector2( 2151.38, 805.375 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 40 )
-
-[sub_resource type="Resource" id=42]
-script = ExtResource( 6 )
-_points = {
-0: SubResource( 27 ),
-1: SubResource( 29 ),
-2: SubResource( 31 ),
-3: SubResource( 33 ),
-4: SubResource( 35 ),
-5: SubResource( 37 ),
-6: SubResource( 39 ),
-9: SubResource( 41 )
-}
-_point_order = [ 0, 6, 1, 2, 4, 9, 5, 3 ]
-_constraints = {
-[ 0, 3 ]: 15
-}
-_next_key = 10
-
-[sub_resource type="Resource" id=23]
-script = ExtResource( 8 )
-textures = [ ExtResource( 12 ) ]
-texture_normals = [  ]
-textures_corner_outer = [  ]
-textures_corner_inner = [  ]
-texture_normals_corner_outer = [  ]
-texture_normals_corner_inner = [  ]
-textures_taper_left = [  ]
-textures_taper_right = [  ]
-texture_normals_taper_left = [  ]
-texture_normals_taper_right = [  ]
-use_corner_texture = true
-use_taper_texture = true
-fit_mode = 1
-
-[sub_resource type="Resource" id=24]
-script = ExtResource( 5 )
-begin = 10.0
-distance = 160.0
-edgeRendering = Vector2( 0, 0 )
-
-[sub_resource type="Resource" id=25]
-script = ExtResource( 4 )
-edge_material = SubResource( 23 )
-normal_range = SubResource( 24 )
-weld = true
-render = true
-z_index = 0
-z_as_relative = true
-offset = 0.0
-
-[sub_resource type="Resource" id=21]
-script = ExtResource( 9 )
-_edge_meta_materials = [ SubResource( 25 ) ]
-fill_textures = [ ExtResource( 13 ) ]
-fill_texture_normals = [  ]
-fill_texture_z_index = -10
-fill_mesh_offset = 0.0
-render_offset = 0.0
 
 [node name="prototype" type="Node2D"]
 
@@ -202,19 +30,23 @@ polygon = PoolVector2Array( 1, 0, 105, 11, 219, -25, 469, -70, 673, -44, 674, 13
 position = Vector2( -1003, 45 )
 polygon = PoolVector2Array( 1, 0, 105, 11, 219, -25, 469, -70, 673, -44, 674, 136, -339, 133, -331, 1, -66, -16 )
 
-[node name="smart_shape_rough" type="Node2D" parent="terrain_blocks"]
-script = ExtResource( 3 )
-curve_bake_interval = 5.0
-_points = SubResource( 42 )
-material_overrides = {
-}
-shape_material = SubResource( 21 )
-tessellation_stages = 8
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 32.0
-collision_offset = 0.0
-collision_polygon_node_path = NodePath("")
+[node name="base_world_block" parent="terrain_blocks" instance=ExtResource( 3 )]
+base_shape = Object(Node2D,"_import_path":NodePath(""),"pause_mode":0,"physics_interpolation_mode":0,"unique_name_in_owner":false,"process_priority":0,"visible":true,"modulate":Color( 1, 1, 1, 1 ),"self_modulate":Color( 1, 1, 1, 1 ),"show_behind_parent":false,"light_mask":1,"material":null,"use_parent_material":false,"position":Vector2( 0, 0 ),"rotation":0.0,"scale":Vector2( 1, 1 ),"z_index":0,"z_as_relative":true,"script":Resource( "res://addons/rmsmartshape/shapes/shape_closed.gd" ),"_dirty":false,"_edges":[ Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/edge.gd" ),"quads":[ Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 231.125, -72.8159 ),"pt_b":Vector2( 269.013, 180.365 ),"pt_c":Vector2( 480.742, 148.605 ),"pt_d":Vector2( 451.485, -105.718 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 451.485, -105.718 ),"pt_b":Vector2( 480.742, 148.605 ),"pt_c":Vector2( 555.776, 142.544 ),"pt_d":Vector2( 544.218, -113.195 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 544.218, -113.195 ),"pt_b":Vector2( 555.776, 142.544 ),"pt_c":Vector2( 623.231, 141.832 ),"pt_d":Vector2( 632.29, -114.008 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 632.29, -114.008 ),"pt_b":Vector2( 623.231, 141.832 ),"pt_c":Vector2( 639.911, 140.747 ),"pt_d":Vector2( 780.207, -73.3861 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 780.207, -73.3861 ),"pt_b":Vector2( 639.911, 140.747 ),"pt_c":Vector2( 721.995, 179.492 ),"pt_d":Vector2( 799.245, -64.5743 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 799.245, -64.5743 ),"pt_b":Vector2( 721.995, 179.492 ),"pt_c":Vector2( 790.708, 193.681 ),"pt_d":Vector2( 820.841, -60.5393 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 820.841, -60.5393 ),"pt_b":Vector2( 790.708, 193.681 ),"pt_c":Vector2( 843.303, 197.596 ),"pt_d":Vector2( 849.237, -58.3355 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 849.237, -58.3355 ),"pt_b":Vector2( 843.303, 197.596 ),"pt_c":Vector2( 1053, 191.573 ),"pt_d":Vector2( 1035.19, -63.8069 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 1035.19, -63.8069 ),"pt_b":Vector2( 1053, 191.573 ),"pt_c":Vector2( 1317.06, 162.074 ),"pt_d":Vector2( 1308.46, -93.7811 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 1308.46, -93.7811 ),"pt_b":Vector2( 1317.06, 162.074 ),"pt_c":Vector2( 1739.68, 174.382 ),"pt_d":Vector2( 1829.2, -65.4518 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/quad.gd" ),"pt_a":Vector2( 1829.2, -65.4518 ),"pt_b":Vector2( 1739.68, 174.382 ),"pt_c":Vector2( 2070.68, 445.442 ),"pt_d":Vector2( 2229.96, 245.022 ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"color":Color( 1, 1, 1, 1 ),"flip_texture":false,"control_point_index":0,"fit_texture":1,"corner":0,"width_factor":1.0)
+ ],"first_point_key":0,"last_point_key":4,"z_index":0,"z_as_relative":true,"wrap_around":false,"material":null)
+ ],"_meshes":[ Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/mesh.gd" ),"texture":Resource( "res://assets/tiles/fill_tiles.png" ),"texture_normal":null,"flip_texture":false,"meshes":[ null ],"mesh_transform":Transform2D( 1, 0, 0, 1, 0, 0 ),"material":null,"z_index":-10,"z_as_relative":true)
+, Object(Reference,"script":Resource( "res://addons/rmsmartshape/shapes/mesh.gd" ),"texture":Resource( "res://assets/tiles/rough_tiles.png" ),"texture_normal":null,"flip_texture":false,"meshes":[ null ],"mesh_transform":Transform2D( 1, 0, 0, 1, 0, 0 ),"material":null,"z_index":0,"z_as_relative":true)
+ ],"_is_instantiable":true,"_curve":null,"_curve_no_control_points":null,"can_edit":true,"editor_debug":false,"curve_bake_interval":5.0,"_points":null,"material_overrides":{
+},"shape_material":null,"collision_size":32.0,"collision_offset":0.0,"collision_polygon_node_path":NodePath(""),"flip_edges":false,"render_edges":true,"tessellation_stages":8,"tessellation_tolerence":4.0,"_holes":[  ],"Edges":null,"Tessellation":null,"tessellation_stages":8,"tessellation_tolerence":4.0,"flip_edges":false,"render_edges":true,"Collision":null,"collision_size":32.0,"collision_offset":0.0,"collision_polygon_node_path":NodePath(""))
+
 
 [node name="game_ui" parent="." instance=ExtResource( 11 )]

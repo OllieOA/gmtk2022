@@ -149,13 +149,14 @@ func launch_dice(normal_launch_vector: Vector2, launch_factor) -> void:
 	
 	apply_central_impulse(launch_thrust)
 	
-	if dicebag.flip_coin():
+	if dicebag.flip_coin():  # Add random torque to encourage a roll
 		apply_torque_impulse(100000)
 	else:
 		apply_torque_impulse(-100000)
 	
-	Event.emit_signal("player_launched")
-	_state = State.FLYING
+	if is_in_group("player"):
+		Event.emit_signal("player_launched", _score_modifier)
+		_state = State.FLYING
 
 
 func next_state() -> void:
