@@ -36,8 +36,3 @@ func _ready() -> void:
 	terrain_modifier = TERRAIN_MODIFIERS[terrain_type]
 	terrain_name = TERRAIN_NAMES[terrain_type]
 	base_shape.add_to_group(terrain_name)
-	base_shape.connect("body_entered", self, "_handle_body_entered")
-
-
-func _handle_body_entered(body) -> void:
-	hit_player.play()

@@ -7,6 +7,9 @@ export (NodePath) onready var launch_bar = get_node(launch_bar) as Node2D
 
 export (NodePath) onready var rolling_animator = get_node(rolling_animator) as AnimationPlayer
 
+export (NodePath) onready var hit_sound = get_node(hit_sound) as AudioStreamPlayer
+export (NodePath) onready var roll_sound = get_node(roll_sound) as AudioStreamPlayer
+
 onready var dicebag = Dicebag.new()
 
 # Effect modifiers
@@ -21,8 +24,8 @@ var _friction_modifier_base: float
 
 const _MAX_POWER_INCREASE = 1.5
 const _MAX_POWER_DECREASE = 0.5
-const _FRICTION_DECREASE = 0.5
-const _BOUNCE_INCREASE = 1.5
+const _FRICTION_DECREASE = 0.1
+const _BOUNCE_INCREASE = 2.0
 
 # Effects
 #	This is a dictionary of a set method and a reset method, with their binds
@@ -41,7 +44,6 @@ var _reset_method := []
 # Terrain modifiers
 var _terrain_launch_power_modifier := 1.0
 var _terrain_friction_modifier := 1.0
-var _terrain_linear_damp_modifier := 1.0
 
 # States
 enum State {
@@ -53,6 +55,7 @@ enum State {
 	WAITING,  # Utility state for if the AI is still deciding what to do - PLAYER ONLY
 	AI_WAITING,
 	CHANGING_PROPERTIES,  # Enter this state, make change, and exit to AIMING
+	WON,
 }
 
 const _NEXT_PLAYER_STATE = {
@@ -85,6 +88,8 @@ func _ready() -> void:
 	_bounce_modifier_base = physics_material_override.bounce
 	_friction_modifier_base = physics_material_override.friction
 
+	Event.connect("level_won", self, "_handle_level_won")
+
 
 func _physics_process(_delta: float) -> void:
 	_slowed_enough = linear_velocity.length() < _VELOCITY_STOP_THRESHOLD
@@ -103,6 +108,7 @@ func _physics_process(_delta: float) -> void:
 
 		State.LANDED:
 			rolling_animator.play("random_rolling")
+			roll_sound.play()
 			_state = State.ROLLING
 
 		State.ROLLING:
@@ -110,7 +116,9 @@ func _physics_process(_delta: float) -> void:
 			if _slowed_enough:
 				rolling_animator.playback_speed = 1.0
 				linear_damp = 10
+				angular_damp = 10
 				rolling_animator.stop()
+				roll_sound.stop()
 				_state = State.CHANGING_PROPERTIES
 
 		State.WAITING:
@@ -126,9 +134,16 @@ func _physics_process(_delta: float) -> void:
 			_set_method = _EFFECTS[_face_value][0]
 			_reset_method = _EFFECTS[_face_value][1]
 
+			Event.emit_signal("active_effect_changed", _face_value)
+
 			call(_set_method[0], _set_method[1])
 
 			next_state()
+
+		State.WON:
+			launch_bar.hide_launch_bar()
+			roll_sound.stop()
+			rolling_animator.stop()
 
 
 func _process(_delta: float) -> void:
@@ -143,8 +158,10 @@ func _change_face_random():
 
 
 func launch_dice(normal_launch_vector: Vector2, launch_factor) -> void:
+	hit_sound.play()
 	launch_bar.hide_launch_bar()
 	linear_damp = -1
+	angular_damp = -1
 
 	var launch_thrust = normal_launch_vector * _BASE_LAUNCH_THRUST * launch_factor * _terrain_launch_power_modifier
 	
@@ -173,33 +190,46 @@ func _update_physics_material() -> void:
 
 
 func _on_base_dice_body_entered(body: Node) -> void:
-	if body.is_in_group("terrain") and _state == State.FLYING:
-		# TODO: ADD TERRAIN MODIFIERS
-		print("CHANGING STATE TO LANDED")
-		_state = State.LANDED
+	if _state == State.FLYING:
+		if body.is_in_group("terrain"):
+			_state = State.LANDED
+	else:
+		if body.is_in_group("terrain"):
+			if body.is_in_group("rough"):
+				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.ROUGH)
+			elif body.is_in_group("green"):
+				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.GREEN)
+			elif body.is_in_group("fairway"):
+				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.FAIRWAY)
+			elif body.is_in_group("bunker"):
+				Event.emit_signal("terrain_effect_changed", BaseWorldBlock.TerrainType.BUNKER)
+	
+
+func _handle_level_won() -> void:
+	_state = State.WON
 
 # SETTERS AND GETTERS
 
 func _set_max_power(val: float) -> void:
 	_max_power_modifier = val
-	print("NEW MAX POWER: ", _max_power_modifier)
+	# print("NEW MAX POWER: ", _max_power_modifier)
 	
 	
 func _set_bounce_modifier(val: float) -> void:
 	_bounce_modifier = val
 	_update_physics_material()
-	print("NEW BOUNCE MODIFIER: ", _bounce_modifier)
+	# print("NEW BOUNCE MODIFIER: ", _bounce_modifier)
 
 
 func _set_friction_modifier(val: float) -> void:
 	_friction_modifier = val
 	_update_physics_material()
-	print("NEW FRICTION MODIFIER: ", _friction_modifier)
+	# print("NEW FRICTION MODIFIER: ", _friction_modifier)
 
 
 func _set_score_modifier(val: int) -> void:
 	_score_modifier = val
-	print("NEW SCORE MODIFIER: ", _score_modifier)
+	# print("NEW SCORE MODIFIER: ", _score_modifier)
 
 
 

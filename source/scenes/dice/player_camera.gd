@@ -18,7 +18,7 @@ onready var player_reference := get_parent()
 export (NodePath) onready var zoom_tween = get_node(zoom_tween) as Tween
 export (NodePath) onready var pos_tween = get_node(pos_tween) as Tween
 
-const _CAMERA_OFFSET = Vector2(200, 0)
+const _CAMERA_OFFSET = Vector2(200, -200)
 
 
 func _ready() -> void:
@@ -28,7 +28,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if not looking_at_map:
-		global_position = lerp(global_position, player_reference.global_position + _CAMERA_OFFSET, 0.1)
+		global_position = lerp(global_position, player_reference.global_position + _CAMERA_OFFSET, 0.2)
 
 
 # Setting and handling
@@ -50,7 +50,9 @@ func _handle_camera_limit_set(bottom_right_limit: Vector2) -> void:
 	var x_zoom_factor = full_rect_x / current_viewport_size.x
 	var y_zoom_factor = full_rect_y / current_viewport_size.y
 
-	required_full_zoom = max(x_zoom_factor, y_zoom_factor) * 1.2
+	required_full_zoom = max(x_zoom_factor, y_zoom_factor)
+
+	limit_right = bottom_right_limit.x
 
 
 # TWEENING

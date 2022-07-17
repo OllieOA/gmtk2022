@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/scenes/levels/base_level.gd" type="Script" id=1]
 [ext_resource path="res://source/ui/game_ui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/scenes/dice/player_dice.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sounds/polite_clap.ogg" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 1168 )
 
 [node name="base_level" type="Node2D"]
 script = ExtResource( 1 )
 player_reference = NodePath("player_dice")
 block_reference = NodePath("world_blocks")
+ambient_sound = NodePath("ambient_sound")
+win_sound = NodePath("win_sound")
 
 [node name="game_ui" parent="." instance=ExtResource( 2 )]
 
@@ -15,5 +21,24 @@ block_reference = NodePath("world_blocks")
 
 [node name="player_dice" parent="." instance=ExtResource( 3 )]
 position = Vector2( 492, -1098 )
+collision_mask = 128
 
 [node name="ambient_sound" type="AudioStreamPlayer" parent="."]
+
+[node name="win_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="invisible_wall_left" type="StaticBody2D" parent="." groups=["terrain"]]
+collision_layer = 256
+
+[node name="collision_shape" type="CollisionShape2D" parent="invisible_wall_left"]
+position = Vector2( -64, -1168 )
+shape = SubResource( 1 )
+
+[node name="invisible_wall_right" type="StaticBody2D" parent="." groups=["terrain"]]
+position = Vector2( 1408, 0 )
+collision_layer = 256
+
+[node name="collision_shape" type="CollisionShape2D" parent="invisible_wall_right"]
+position = Vector2( -64, -1168 )
+shape = SubResource( 1 )

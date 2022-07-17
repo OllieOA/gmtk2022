@@ -30,7 +30,8 @@ Track external things we use here:
 - Music:
   - [blah](https://youtu.be/dQw4w9WgXcQ)
 - SFX:
-  - [blah](https://youtu.be/dQw4w9WgXcQ)
+  - AGFX (Attribution 3.0)
+  - jittels (Attribution 3.0)
 - UI:
   - [blah](https://youtu.be/dQw4w9WgXcQ)
 

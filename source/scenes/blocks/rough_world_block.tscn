@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://source/scenes/blocks/base_world_block.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/rmsmartshape/materials/shape_material.gd" type="Script" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://addons/rmsmartshape/normal_range.gd" type="Script" id=9]
 [ext_resource path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" type="Script" id=10]
 [ext_resource path="res://assets/tiles/rough_tiles.png" type="Texture" id=11]
+
+[sub_resource type="PhysicsMaterial" id=55]
+friction = 0.8
+rough = true
+bounce = 0.01
 
 [sub_resource type="Resource" id=30]
 script = ExtResource( 6 )
@@ -235,8 +240,9 @@ render_offset = 0.0
 base_shape = NodePath("base_shape")
 terrain_type = 2
 
-[node name="base_shape" type="StaticBody2D" parent="." index="1"]
+[node name="base_shape" type="StaticBody2D" parent="." index="1" groups=["terrain"]]
 collision_layer = 128
+physics_material_override = SubResource( 55 )
 
 [node name="base_shape" type="Node2D" parent="base_shape" index="0"]
 script = ExtResource( 3 )

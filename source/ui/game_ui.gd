@@ -9,9 +9,12 @@ export (NodePath) onready var terrain_effect_text = get_node(terrain_effect_text
 export (NodePath) onready var score_current = get_node(score_current) as Label
 export (NodePath) onready var score_best = get_node(score_best) as Label
 
-export (NodePath) onready var  dice_effect_small_icons = get_node(dice_effect_small_icons)
-export (NodePath) onready var  terrain_effect_small_icons = get_node(terrain_effect_small_icons)
+export (NodePath) onready var dice_effect_small_icons = get_node(dice_effect_small_icons)
+export (NodePath) onready var terrain_effect_small_icons = get_node(terrain_effect_small_icons)
 
+export (NodePath) onready var win_box = get_node(win_box) as PanelContainer
+export (NodePath) onready var terrain_box = get_node(terrain_box) as MarginContainer
+export (NodePath) onready var dice_box = get_node(dice_box) as MarginContainer
 
 const _DICE_EFFECT_ICONS = {
 	1: preload("res://assets/dice/dice_icon_medium_1.png"),
@@ -54,9 +57,13 @@ const _TERRAIN_EFFECT_TEXT = {
 
 
 func _ready() -> void:
+	win_box.hide()
+	terrain_box.show()
+	dice_box.show()
 	Event.connect("strokes_updated", self, "_handle_strokes_updated")
 	Event.connect("active_effect_changed", self, "_handle_active_effect_changed")
 	Event.connect("terrain_effect_changed", self, "_handle_terrain_effect_changed")
+	Event.connect("level_won", self, "_handle_level_won")
 
 	call_deferred("_update_tooltips")
 
@@ -84,12 +91,24 @@ func _handle_active_effect_changed(new_number: int) -> void:
 func _handle_terrain_effect_changed(terrain_type: int) -> void:
 	_set_new_terrain_effect(terrain_type)
 
+
+func _handle_level_won() -> void:
+	win_box.show()
+	terrain_box.hide()
+	dice_box.hide()
+
+
 # Methods
 
 func _set_new_dice_effect(new_number: int) -> void:
 	active_dice_effect_icon.texture = _DICE_EFFECT_ICONS[new_number]
 	active_dice_effect_text.text = _DICE_EFFECT_TEXT[new_number]
 
+
 func _set_new_terrain_effect(terrain_type: int) -> void:
 	terrain_effect_icon.texture = _TERRAIN_EFFECT_ICONS[terrain_type]
 	terrain_effect_text.text = _TERRAIN_EFFECT_TEXT[terrain_type]
+
+
+func _on_main_menu_button_pressed() -> void:
+	SceneManager.load_scene("title_screen")

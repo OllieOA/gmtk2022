@@ -179,6 +179,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rmsmartshape/vertex_properties.gd"
 }, {
+"base": "Resource",
+"class": "ScoreTracker",
+"language": "GDScript",
+"path": "res://source/scenes/levels/score_tracker.gd"
+}, {
 "base": "Reference",
 "class": "Task",
 "language": "GDScript",
@@ -234,6 +239,7 @@ _global_script_class_icons={
 "SS2D_Shape_Render": "",
 "SS2D_Strings": "",
 "SS2D_VertexProperties": "",
+"ScoreTracker": "",
 "Task": "",
 "TaskQueue": "",
 "WinArea": "",
@@ -243,7 +249,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Rolf"
-run/main_scene="res://source/scenes/levels/prototype.tscn"
+run/main_scene="res://source/scenes/levels/level1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -326,6 +332,7 @@ zoom_out={
 2d_physics/layer_2="enemy_dice"
 2d_physics/layer_4="win_area"
 2d_physics/layer_8="ground"
+2d_physics/layer_9="invisible_wall"
 
 [rendering]
 

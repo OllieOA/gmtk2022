@@ -9,3 +9,4 @@ signal active_effect_changed(new_effect)
 signal terrain_effect_changed(new_effect)
 
 signal win_area_loaded(win_location)
+signal level_won
