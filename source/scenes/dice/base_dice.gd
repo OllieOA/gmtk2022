@@ -91,7 +91,8 @@ func _physics_process(_delta: float) -> void:
 
 	match _state:
 		State.START:
-			_state = State.AIMING  # TODO: REPLACE WITH SIGNAL
+			_state = State.ROLLING
+			rolling_animator.play("random_rolling")
 
 		State.AIMING:
 			launch_bar.show_launch_bar()

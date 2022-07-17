@@ -236,6 +236,7 @@ base_shape = NodePath("base_shape")
 terrain_type = 3
 
 [node name="base_shape" type="StaticBody2D" parent="." index="1"]
+collision_layer = 128
 
 [node name="base_shape" type="Node2D" parent="base_shape" index="0"]
 script = ExtResource( 3 )

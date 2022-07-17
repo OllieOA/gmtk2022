@@ -7,6 +7,7 @@
 [node name="base_level" type="Node2D"]
 script = ExtResource( 1 )
 player_reference = NodePath("player_dice")
+block_reference = NodePath("world_blocks")
 
 [node name="game_ui" parent="." instance=ExtResource( 2 )]
 

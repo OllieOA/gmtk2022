@@ -276,6 +276,7 @@ enabled=PoolStringArray( "res://addons/rmsmartshape/plugin.cfg" )
 [global]
 
 background=false
+layer=false
 
 [importer_defaults]
 
@@ -323,6 +324,7 @@ zoom_out={
 
 2d_physics/layer_1="player_dice"
 2d_physics/layer_2="enemy_dice"
+2d_physics/layer_4="win_area"
 2d_physics/layer_8="ground"
 
 [rendering]
