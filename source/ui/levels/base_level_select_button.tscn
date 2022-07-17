@@ -14,6 +14,7 @@ margin_right = 148.0
 margin_bottom = 90.0
 text = "Hole 1"
 script = ExtResource( 1 )
+best_text = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5

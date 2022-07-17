@@ -914,11 +914,17 @@ polygon = PoolVector2Array( -3.31348, -3.31372, 320, -0.0020752, 342.841, -0.742
 [node name="player_dice" parent="." index="3"]
 position = Vector2( 576, -1136 )
 
-[node name="invisible_wall_left" parent="." index="6"]
+[node name="invisible_wall_left" parent="." index="5"]
 position = Vector2( 160, 0 )
 
-[node name="invisible_wall_right" parent="." index="7"]
+[node name="invisible_wall_right" parent="." index="6"]
 position = Vector2( 7808, 0 )
+
+[node name="tee1" parent="." index="7"]
+position = Vector2( 176, -720 )
+
+[node name="tee2" parent="." index="8"]
+position = Vector2( 704, -728 )
 
 [editable path="world_blocks/fairway_world_block"]
 [editable path="world_blocks/rough_world_block"]

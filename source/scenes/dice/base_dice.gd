@@ -89,7 +89,6 @@ func _ready() -> void:
 	_friction_modifier_base = physics_material_override.friction
 
 	Event.connect("level_won", self, "_handle_level_won")
-	apply_random_torque(50000)
 
 
 func _physics_process(_delta: float) -> void:
@@ -97,8 +96,10 @@ func _physics_process(_delta: float) -> void:
 
 	match _state:
 		State.START:
-			_state = State.ROLLING
+			apply_random_torque(50000)
 			rolling_animator.play("random_rolling")
+			roll_sound.play()
+			_state = State.ROLLING
 
 		State.AIMING:
 			launch_bar.show_launch_bar()

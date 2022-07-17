@@ -2,7 +2,7 @@ class_name ZoomingCamera2D extends Camera2D
 
 
 export var min_zoom := 1.5
-export var max_zoom := 3.0
+export var max_zoom := 4.0
 export var zoom_factor := 0.2
 export var zoom_duration := 0.2
 
@@ -18,17 +18,18 @@ onready var player_reference := get_parent()
 export (NodePath) onready var zoom_tween = get_node(zoom_tween) as Tween
 export (NodePath) onready var pos_tween = get_node(pos_tween) as Tween
 
-const _CAMERA_OFFSET = Vector2(200, -200)
+const _CAMERA_OFFSET = Vector2(200, -150)
 
 
 func _ready() -> void:
 	Event.connect("camera_limit_set", self, "_handle_camera_limit_set")
-	Event.connect("level_setup_complete", self, "_handle_level_setup")
 
 
 func _process(delta: float) -> void:
 	if not looking_at_map:
 		global_position = lerp(global_position, player_reference.global_position + _CAMERA_OFFSET, 0.2)
+	else:
+		global_position = map_centre
 
 
 # Setting and handling

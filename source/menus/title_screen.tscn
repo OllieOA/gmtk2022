@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/themes/title_screen.tres" type="Theme" id=1]
 [ext_resource path="res://source/ui/itch_link.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://source/ui/levels/base_level_select_button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/title/title_image_text.png" type="Texture" id=7]
 [ext_resource path="res://assets/title/title_image_base.png" type="Texture" id=8]
+[ext_resource path="res://assets/themes/in_game_ui.tres" type="Theme" id=9]
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 5.0
@@ -36,6 +37,15 @@ bg_color = Color( 0.635294, 0.156863, 0.156863, 1 )
 corner_radius_top_left = 20
 corner_radius_bottom_right = 20
 
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://assets/fonts/Bebas-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 4 )
+
 [node name="title_screen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,6 +53,8 @@ theme = ExtResource( 1 )
 script = ExtResource( 5 )
 start_box = NodePath("button_area/start_game")
 level_select_box = NodePath("button_area/level_selection_menu")
+credits_box = NodePath("credits_container")
+level_select_grid = NodePath("button_area/level_selection_menu/level_grid")
 
 [node name="title_background" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -87,20 +99,20 @@ columns = 2
 
 [node name="level_select_1" parent="button_area/level_selection_menu/level_grid" instance=ExtResource( 6 )]
 margin_right = 155.0
-target_level = "level1"
+target_level_number = 1
 
 [node name="level_select_2" parent="button_area/level_selection_menu/level_grid" instance=ExtResource( 6 )]
 margin_left = 175.0
 margin_right = 331.0
 text = "Hole 2"
-target_level = "level2"
+target_level_number = 2
 
 [node name="level_select_3" parent="button_area/level_selection_menu/level_grid" instance=ExtResource( 6 )]
 margin_top = 140.0
 margin_right = 155.0
 margin_bottom = 230.0
 text = "Hole 3"
-target_level = "level3"
+target_level_number = 3
 
 [node name="level_select_4" parent="button_area/level_selection_menu/level_grid" instance=ExtResource( 6 )]
 margin_left = 175.0
@@ -108,7 +120,7 @@ margin_top = 140.0
 margin_right = 331.0
 margin_bottom = 230.0
 text = "Hole 4"
-target_level = "level4"
+target_level_number = 4
 
 [node name="back_button" type="Button" parent="button_area/level_selection_menu"]
 margin_left = 105.0
@@ -147,6 +159,7 @@ margin_bottom = 200.0
 rect_min_size = Vector2( 240, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 text = "CREDITS"
 
 [node name="options_button" type="Button" parent="button_area/start_game"]
@@ -190,4 +203,49 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 expand_icon = false
 
+[node name="credits_container" type="MarginContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -175.0
+margin_right = 135.0
+margin_bottom = 175.0
+theme = ExtResource( 9 )
+
+[node name="credits_panel" type="Panel" parent="credits_container"]
+margin_right = 270.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 270, 350 )
+
+[node name="credits_rows" type="VBoxContainer" parent="credits_container/credits_panel"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 70.0
+margin_bottom = 40.0
+
+[node name="credits_title" type="Label" parent="credits_container/credits_panel/credits_rows"]
+margin_right = 249.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 5 )
+text = "CREDITS"
+align = 1
+
+[node name="credits_title2" type="Label" parent="credits_container/credits_panel/credits_rows"]
+margin_top = 76.0
+margin_right = 249.0
+margin_bottom = 318.0
+text = "Game by OllieOA
+Using Godot 3.5.RC6
+AUDIO Samples used from
+- AGFX
+- jittels
+- InspectorJ
+UNDER ATTRIBUTION LICENSE "
+align = 1
+
+[connection signal="pressed" from="button_area/level_selection_menu/back_button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="button_area/start_game/start_game_button" to="." method="_on_start_game_button_pressed"]
+[connection signal="toggled" from="button_area/start_game/credits_button" to="." method="_on_credits_button_toggled"]

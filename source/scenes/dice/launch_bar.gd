@@ -30,7 +30,7 @@ const _FILL_BAR_LOOKUP = {
 
 const _FILL_BAR_COLORS = {
 	Modifiers.HALF: Color("475981"),  # BLUE
-	Modifiers.NORMAL: Color("f3c567"),  # YELLOW
+	Modifiers.NORMAL: Color("ff8600"),  # YELLOW
 	Modifiers.MORE: Color("f10d0d"),  # RED
 }
 

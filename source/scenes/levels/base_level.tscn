@@ -4,7 +4,7 @@
 [ext_resource path="res://source/ui/game_ui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/scenes/dice/player_dice.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/polite_clap.ogg" type="AudioStream" id=4]
-[ext_resource path="res://assets/sounds/wind.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/objects/tee.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 1560 )
@@ -13,7 +13,6 @@ extents = Vector2( 64, 1560 )
 script = ExtResource( 1 )
 player_reference = NodePath("player_dice")
 block_reference = NodePath("world_blocks")
-ambient_sound = NodePath("ambient_sound")
 win_sound = NodePath("win_sound")
 cloud_layer = NodePath("cloud_layer")
 
@@ -26,9 +25,6 @@ cloud_layer = NodePath("cloud_layer")
 [node name="player_dice" parent="." instance=ExtResource( 3 )]
 position = Vector2( 492, -1098 )
 collision_mask = 128
-
-[node name="ambient_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
 
 [node name="win_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -47,3 +43,10 @@ collision_layer = 256
 [node name="collision_shape" type="CollisionShape2D" parent="invisible_wall_right"]
 position = Vector2( -64, -1168 )
 shape = SubResource( 1 )
+
+[node name="tee1" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+
+[node name="tee2" type="Sprite" parent="."]
+position = Vector2( 72, 0 )
+texture = ExtResource( 5 )

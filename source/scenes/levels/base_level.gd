@@ -3,7 +3,6 @@ extends Node2D
 export (NodePath) onready var player_reference = get_node(player_reference) as PlayerDice
 export (NodePath) onready var block_reference = get_node(block_reference) as Node2D
 
-export (NodePath) onready var ambient_sound = get_node(ambient_sound) as AudioStreamPlayer
 export (NodePath) onready var win_sound = get_node(win_sound) as AudioStreamPlayer
 
 export (NodePath) onready var cloud_layer = get_node(cloud_layer) as Node2D
@@ -37,13 +36,10 @@ func _ready() -> void:
 
 	score_tracker.refresh_score(level_number)
 
-	print("LOADED SCORE TRACKER:", score_tracker.best_score_tracker)
 
 	Event.connect("player_launched", self, "_handle_player_launched")
 	Event.connect("level_won", self, "_handle_level_won")
 	Event.connect("next_level_requested", self, "_handle_next_level_requested")
-
-	ambient_sound.play()
 
 	Event.emit_signal("update_best", score_tracker.get_best_score(level_number))
 	Event.emit_signal("level_setup_complete", level_number)

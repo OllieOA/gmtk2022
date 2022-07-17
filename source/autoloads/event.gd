@@ -15,3 +15,5 @@ signal update_best(new_best)
 signal max_power_modifier_updated(new_value)
 
 signal next_level_requested
+
+signal a_button_pressed
